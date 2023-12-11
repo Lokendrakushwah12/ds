@@ -96,8 +96,7 @@ def multiplication(poly1,poly2):
 
 v=int(input("Enter value:"))
 print("Value of polynomial at",v,"is:",evaluate(p1,v))
-print("Addition of two polynomial is:",end="")
-sum(p1,p2)
-print("Multiplication of two polynomial is:",end="")
-multiplication(p1,p2)
+print("Addition of two polynomial is:", sum(p1,p2))
+print("Multiplication of two polynomial is:", multiplication(p1,p2))
+
 

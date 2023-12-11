@@ -22,5 +22,4 @@ int main(){
     infix_to_prefix(stri);
     cout<<endl;
     cout<<parenthis(stri);
-
 }

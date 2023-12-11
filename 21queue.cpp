@@ -7,7 +7,6 @@ class CircularQue{
     int rear;
     int size;
     vector<int>arr;
-    // int *arr;
     public:
     CircularQue(int n){
         size=n;
@@ -58,7 +57,7 @@ class CircularQue{
         if(front==rear){
             front=rear=-1;
         }
-        else if(front=size-1){
+        else if(front==size-1){
             front=0;
         }
         else{

@@ -36,7 +36,7 @@ void infix_to_prefix(string s){
     stack<char> st;
     string res="";
     for(int i=0;i<s.size();i++){
-        if(s[i]>=97 && s[i]<=122){
+        if((s[i]>=97 && s[i]<=122) || (s[i]>='0' && s[i]<='9')){
             res+=s[i];
         }
         else if(s[i]=='('){

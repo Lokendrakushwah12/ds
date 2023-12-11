@@ -1,14 +1,15 @@
 #include <iostream>
 #include <list>
+using namespace std;
 
-template <typename T>
 class PriorityQueue {
-private:
-    struct Node {
-        T data;
+    private:
+    class Node {
+    public:
+        string data;
         int priority;
 
-        Node(const T& d, int p) : data(d), priority(p) {}
+        Node(const string& d, int p) : data(d), priority(p) {}
 
         // Overload <= operator to compare nodes based on priority
         bool operator<=(const Node& other) const {
@@ -16,11 +17,11 @@ private:
         }
     };
 
-    std::list<Node> itemList;
+    list<Node> itemList;
 
-public:
+    public:
     // Function to insert an item with priority into the priority queue
-    void enqueue(const T& item, int priority) {
+    void enqueue(const string& item, int priority) {
         Node newNode(item, priority);
 
         // Find the correct position in the ordered list based on priority
@@ -34,14 +35,13 @@ public:
     }
 
     // Function to remove and return the item with the highest priority
-    T dequeue() {
+    string dequeue() {
         if (!itemList.empty()) {
-            T highestPriorityItem = itemList.front().data;
+            string highestPriorityItem = itemList.front().data;
             itemList.pop_front();
             return highestPriorityItem;
         } else {
-            std::cerr << "Priority queue is empty." << std::endl;
-            exit(EXIT_FAILURE);
+            cout << "Priority queue is empty." << endl;
         }
     }
 
@@ -53,19 +53,19 @@ public:
     // Function to display the contents of the priority queue
     void displayQueue() const {
         if (!itemList.empty()) {
-            std::cout << "Priority Queue: ";
+            cout << "Priority Queue: ";
             for (const auto& node : itemList) {
-                std::cout << "(" << node.data << ", " << node.priority << ") ";
+                cout << "(" << node.data << ", " << node.priority << ") ";
             }
-            std::cout << std::endl;
+            cout << endl;
         } else {
-            std::cout << "Priority queue is empty." << std::endl;
+            cout << "Priority queue is empty." << endl;
         }
     }
 };
 
 int main() {
-    PriorityQueue<std::string> priorityQueue;
+    PriorityQueue priorityQueue;
 
     // Enqueue items with priorities
     priorityQueue.enqueue("Item1", 3);
@@ -76,10 +76,9 @@ int main() {
     priorityQueue.displayQueue();
 
     // Dequeue the highest priority item
-    std::cout << "Dequeued: " << priorityQueue.dequeue() << std::endl;
+    cout << "Dequeued: " << priorityQueue.dequeue() << endl;
 
     // Display the updated priority queue
     priorityQueue.displayQueue();
 
-    return 0;
 }

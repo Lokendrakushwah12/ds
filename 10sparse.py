@@ -23,7 +23,7 @@ for i in range(r2):
     m2.append(temp)
 
 
-def input(m,r,c):
+def sparse(m,r,c):
 
     t=[]
     sp=[]
@@ -49,8 +49,8 @@ def input(m,r,c):
 sp1=[]
 sp2=[]
 
-sp1=input(m1,r1,c1)
-sp2=input(m2,r2,c2)
+sp1=sparse(m1,r1,c1)
+sp2=sparse(m2,r2,c2)
 
 def output(sp):
     print("Row","Col","Value")
@@ -63,84 +63,6 @@ print("1st Sparse Matrix:")
 output(sp1)
 print("2nd Sparse Matrix:")
 output(sp2)
-
-def sum(sp1,r1,c1,sp2,r2,c2):
-
-    if(r1!=r2 or c1!=c2):
-        print("Addition is not possible")
-    else:
-        s=[]
-        temp=[]
-        temp.append(r1)
-        temp.append(c1)
-        temp.append(0)
-        s.append(temp)
-        cnt=0
-        i=1
-        j=1
-        while(i<len(sp1) and j<len(sp2)):
-            temp=[]
-
-            if(sp1[i][0]==sp2[j][0]):
-                if(sp1[i][1]==sp2[j][1]):
-                    temp.append(sp1[i][0])
-                    temp.append(sp1[i][1])
-                    temp.append(sp1[i][2]+sp2[j][2])
-                    i+=1
-                    j+=1
-                    cnt+=1
-
-                elif(sp1[i][1]<sp2[j][1]):
-                    temp.append(sp1[i][0])
-                    temp.append(sp1[i][1])
-                    temp.append(sp1[i][2])
-                    i+=1
-                    cnt+=1
-
-                else:
-                    temp.append(sp2[j][0])
-                    temp.append(sp2[j][1])
-                    temp.append(sp2[j][2])
-                    j+=1
-                    cnt+=1
-
-            elif(sp1[i][0]<sp2[j][0]):
-                temp.append(sp1[i][0])
-                temp.append(sp1[i][1])
-                temp.append(sp1[i][2])
-                i+=1
-                cnt+=1
-
-            else:
-                temp.append(sp2[j][0])
-                temp.append(sp2[j][1])
-                temp.append(sp2[j][2])
-                j+=1
-                cnt+=1
-
-            s.append(temp)
-
-        while(i<len(sp1)):
-            temp=[]
-            temp.append(sp1[i][0])
-            temp.append(sp1[i][1])
-            temp.append(sp1[i][2])
-            i+=1
-            cnt+=1
-            s.append(temp)
-        
-        while(j<len(sp2)):
-            temp=[]
-            temp.append(sp2[j][0])
-            temp.append(sp2[j][1])
-            temp.append(sp2[j][2])
-            j+=1
-            cnt+=1
-            s.append(temp)
-
-        s[0][2]=cnt
-        return output(s)
-
 
 def transpose(sp):
     temp=[]

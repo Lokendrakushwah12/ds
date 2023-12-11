@@ -23,7 +23,7 @@ for i in range(r2):
     m2.append(temp)
 
 
-def input(m,r,c):
+def sparse(m,r,c):
 
     t=[]
     sp=[]
@@ -49,8 +49,8 @@ def input(m,r,c):
 sp1=[]
 sp2=[]
 
-sp1=input(m1,r1,c1)
-sp2=input(m2,r2,c2)
+sp1=sparse(m1,r1,c1)
+sp2=sparse(m2,r2,c2)
 
 def output(sp):
     print("Row","Col","Value")
@@ -165,39 +165,3 @@ def transpose(sp):
 
 print("Transpose of Sparse Matrix:")
 transpose(sp1)
-
-def fast_transpose(sp):
-
-    x=[0]*sp[0][1]
-
-    for i in range(sp[0][2]):
-        x[sp[i+1][1]]+=1
-
-    rank=[]
-    rank.append(1)
-    for i in range(len(x)-1):
-        rank.append(rank[i]+x[i])
-
-
-    temp=[]
-    tr=[]
-    temp.append(sp[0][1])
-    temp.append(sp[0][0])
-    temp.append(sp[0][2])
-    tr.append(temp)
-
-
-    for i in range(sp[0][2]):
-        temp=[]
-        temp.append(0)
-        temp.append(0)
-        temp.append(0)
-        tr.append(temp)
-
-    for i in range(sp[0][2]):
-        tr[rank[sp[i+1][1]]][0]=sp[i+1][1]
-        tr[rank[sp[i+1][1]]][1]=sp[i+1][0]
-        tr[rank[sp[i+1][1]]][2]=sp[i+1][2]
-        rank[sp[i+1][1]]+=1
-
-    return output(tr)

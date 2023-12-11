@@ -5,12 +5,6 @@ class node{
     int PRN;
     string name;
     node* next;
-    // node(){
-    //     reg=0;
-    //     roll=0;
-    //     name="";
-    //     next=NULL;
-    // }
     node(int PRN1,string n ){
         PRN = PRN1;
         name = n;
@@ -77,17 +71,6 @@ class pinncal_club{
 };
 int main(){
    pinncal_club obj;
-//    obj.insert(4,"sdf");
-//    obj.insert(7,"sdfgf");
-//    obj.insert(8,"sdfgf");
-//    obj.insert(9,"sdfgf");
-//    obj.insert(1,"sdfgf");
-
-//    obj.display();
-//    obj.del(4);
-//    obj.display();
-//    int tot=obj.total();
-//    cout<<tot;
     int n,prn;
     string name;
     cout<<"enter no of element :";
