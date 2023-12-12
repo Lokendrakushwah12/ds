@@ -37,6 +37,6 @@ def radixSort(arr):
         exp *= 10
 
     return arr
-
+# time complexity of Radix Sort is O(number of digits in the maximum number * (n + range of the input))
 sorted_arr = radixSort(arr)
 print("Sorted array using Radix Sort:", sorted_arr)

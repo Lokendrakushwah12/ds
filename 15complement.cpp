@@ -34,6 +34,7 @@ class binary{
         
         
     }
+    // tc: O(1)
     void display(){
         node*temp=head;
         while(temp!=NULL){
@@ -41,6 +42,7 @@ class binary{
             temp=temp->next;
         }
     }
+    // tc: O(n)
     void one(){
         node*curr=head;
         while(curr!=NULL){
@@ -54,6 +56,7 @@ class binary{
             curr=curr->next;
         }
     }
+    // tc: O(n)
     void two(){
         one();
         int carry=1;
@@ -68,6 +71,7 @@ class binary{
             insert(carry);
         }
     }
+    // tc: O(n)
 };
 int main(){
     binary obj;

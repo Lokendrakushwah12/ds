@@ -5,7 +5,7 @@ def bubbleSort(arr,n):
 				temp=arr[j]
 				arr[j]=arr[j+1]
 				arr[j+1]=temp
-
+# Time Complexity: O(n^2)
 def shellSort(arr,n):
 	gap = int(n/2)
 	while gap > 0:
@@ -18,7 +18,8 @@ def shellSort(arr,n):
 				j -= gap
 			arr[j] = temp
 		gap =int(gap/2)
-
+# worst tc: O(n^2)
+# avg tc: O(n log n)
 		
 def arrayInput(arr):
     n=int(input("Enter no. of elements: "))

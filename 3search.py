@@ -8,40 +8,41 @@ def linear(num):
         print("the number was not present")
     else:
         print("the number was present")    
+# Time Complexity: O(n)
+
 
 def fibonacci(num):
-    tf = int(input("enter the number to be searched: "))
-    nu = len(num)
+    key=int(input("enter the number to be searched: "))
     num.sort()
-    m2 = 0
-    m1 = 1
-    m = 1
-    while(m<nu):
-        m2 = m1
-        m1 = m
-        m = m1 + m2
-    
-    offset = 0
-    call = 0
+    m2=0
+    m1=1
+    m=1
+    while(m<len(num)):
+        m2=m1
+        m1=m
+        m=m1+m2
+        
+    offset=0
+    flag=0
     while(m>1):
-        i = min(offset+m2, nu-1)
-        if (tf == num[i]):
-            call = 1
+        i=min(offset+m2, len(num)-1)
+        if (key==num[i]):
+            flag=1
             break
-        elif(tf > num[i]):
+        elif(key>num[i]):
             m = m1
             m1 = m2
             m2 = m-m1
             offset = i
-        elif(tf < num[i]):
+        elif(key < num[i]):
             m = m2
             m1 = m1- m2
             m2 = m -m1    
-    if(call == 0):
+    if(flag == 0):
         print("number was not present")
     else:
         print("number was present")
-
+# Time Complexity: O(log n)
 
 n =  int(input("enter the number of elements: "))
 num = list()

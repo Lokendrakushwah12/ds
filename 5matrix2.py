@@ -78,31 +78,25 @@ def multiplication(m1,m2):
     return result
 
 
-def saddle(matrix):
-
-    for i in range(len(matrix)):
-        min_row = matrix[i][0]
-    
-        ind_y=0
-        for j in range(1, len(matrix)):
-            if (min_row > matrix[i][j]):
-                min_row = matrix[i][j]
-                ind_y = j
-
-       
-        k = 0
-        for k in range(len(matrix)):
-            if (min_row >= matrix[k][ind_y]):
-                k += 1
-          
-    if (k == len(matrix)):
-        print("Value of Saddle Point ",min_row)
-        
-    elif(k!=len(matrix)):
-        print("No saddle point found")
+def saddlePoint(a,m,n):
+    for i in range(m):
+        min=a[i][0]
+        col=0
+        for j in range(n):
+            if a[i][j]<min:
+                min=a[i][j]
+                col=j
+        max=a[0][col]
+        for k in range(m):
+            if a[k][col]>max:
+                max=a[k][col]
+        if min==max:
+            print("Saddle point is:",min)
+            return
+    print("No saddle point")
 
 print("Addition of two given matrix is",addition(matrix1,matrix2))
 print("Substraction of two given matrix is:",substraction(matrix1,matrix2))
 print("Multiplication of two given matrix is:",multiplication(matrix1,matrix2))
 print("Transpose of given matrix is:",transpose(matrix1))
-saddle(matrix1)
+saddlePoint(matrix1)

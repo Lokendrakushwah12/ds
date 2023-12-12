@@ -1,68 +1,59 @@
-m1=[]
-r1=int(input("Row1:"))
-c1=int(input("Column1:"))
+m1=int(input())
+n1=int(input())
+a=[]
 
-for i in range(r1):
+for i in range(m1):
+    x=[]
+    for j in range(n1):
+        x.append(int(input()))
+    a.append(x)
+  
+m2=int(input())
+n2=int(input())
+b=[]
+  
+for i in range(m2):
+    x=[]
+    for j in range(n2):
+        x.append(int(input()))
+    b.append(x)
+
+def sparse(a,m,n):
+    s=[]
     temp=[]
-    for j in range(c1):
-        x=int(input())
-        temp.append(x)
-    m1.append(temp)
-
-m2=[]
-
-r2=int(input("Row2:"))
-c2=int(input("Column2:"))
-
-for i in range(r2):
-    temp=[]
-    for j in range(c2):
-        x=int(input())
-        temp.append(x)
-        
-    m2.append(temp)
-
-
-def sparse(m,r,c):
-
-    t=[]
-    sp=[]
-    t.append(r)
-    t.append(c)
-    t.append(0) 
-    sp.append(t)
+    temp.append(m)
+    temp.append(n)
+    temp.append(0)
+    s.append(temp)
     cnt=0
-    for i in range(r):
-        for j in range(c):
-            t=[]
-            if(m[i][j]!=0):
-                t.append(i)
-                t.append(j)
-                t.append(m[i][j])
-                sp.append(t)
+    for i in range(m):
+        for j in range(n):
+            temp=[]
+            if a[i][j]!=0:
+                temp.append(i)
+                temp.append(j)
+                temp.append(a[i][j])
                 cnt+=1
+                s.append(temp)
+    s[0][2]=cnt
+    return s
 
-    sp[0][2]=cnt
-    return sp
+sparse1=[]
+sparse2=[]
+sparse1=sparse(a,m1,n1)
+sparse2=sparse(b,m2,n2)
 
-
-sp1=[]
-sp2=[]
-
-sp1=sparse(m1,r1,c1)
-sp2=sparse(m2,r2,c2)
-
-def output(sp):
+def display(sparse):
     print("Row","Col","Value")
-    for i in range(len(sp)):
+    for i in range(len(sparse)):
         for j in range(3):
-            print(sp[i][j],end="    ")
+            print(sparse[i][j],end="    ")
         print()
 
 print("1st Sparse Matrix:")
-output(sp1)
+display(sparse1)
 print("2nd Sparse Matrix:")
-output(sp2)
+display(sparse2)
 
 def transpose(sp):
     temp=[]
@@ -80,45 +71,32 @@ def transpose(sp):
                 temp.append(sp[j+1][2])
                 tp.append(temp)
 
-    return output(tp)
+    return tp
 
 print("Transpose of Sparse Matrix:")
-transpose(sp1)
+display(transpose(sparse1))
 
-def fast_transpose(sp):
-    x=[0]*sp[0][1]
-    
-    for i in range(sp[0][2]):
-        x[sp[i+1][1]]+=1
-
+def FastTranspose(s):
+    t=[]
+    rowTerms=[]
     rank=[]
+    for i in range(s[0][1]):
+        rowTerms.append(0)
+    for i in range(1,len(s)):
+        rowTerms[s[i][1]]+=1
     rank.append(1)
-    for i in range(len(x)-1):
-        rank.append(rank[i]+x[i])
-
-
-    temp=[]
-    tr=[]
-    temp.append(sp[0][1])
-    temp.append(sp[0][0])
-    temp.append(sp[0][2])
-    tr.append(temp)
-
-
-    for i in range(sp[0][2]):
+    for i in range(1,s[0][1]):
+        rank.append(rank[i-1]+rowTerms[i-1])
+    t.append(s[0])
+    for i in range(1,len(s)):
         temp=[]
-        temp.append(0)
-        temp.append(0)
-        temp.append(0)
-        tr.append(temp)
-
-    for i in range(sp[0][2]):
-        tr[rank[sp[i+1][1]]][0]=sp[i+1][1]
-        tr[rank[sp[i+1][1]]][1]=sp[i+1][0]
-        tr[rank[sp[i+1][1]]][2]=sp[i+1][2]
-        rank[sp[i+1][1]]+=1
-
-    return output(tr)
-
-print("Fast transpose of Sparse Matrix:")
-fast_transpose(sp1)
+        temp.append(s[i][1])
+        temp.append(s[i][0])
+        temp.append(s[i][2])
+        t.insert(rank[s[i][1]],temp)
+        rank[s[i][1]]+=1
+    return t
+# T.C. = O(no. of col + no. of non-zero elements)
+print("Fast transpose of sparse matrix:")
+print("row       ", "column       ", "value")
+print(display(FastTranspose(sparse(a,m1,n1))))

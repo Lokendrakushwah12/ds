@@ -9,7 +9,7 @@ def sentinel(num):
         print("the number was present")
     else:
         print("the numbe was not present")
-        
+# Time Complexity: O(n)      
 def binary(num):
     c=0
     nu = int(input("the number to be searched: "))
@@ -26,7 +26,7 @@ def binary(num):
             h = mid - 1
         else:
             l = mid + 1
-
+# Time Complexity: O(log n)
 n =  int(input("enter the number of elements: "))
 num = list()
 for i in range(0, n):

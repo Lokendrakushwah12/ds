@@ -46,6 +46,7 @@ string infix_to_postfix(string s){
     return res;
     
 }
+// TC: O(n)
 
 bool isOperator(char s){
     if(s=='+'|| s=='-' ||s=='*'|| s=='/'){
@@ -83,6 +84,7 @@ int evaluate(string s){
     }
     return st.top();
 }
+// TC: O(n)
 
 int main(){
     string stri;

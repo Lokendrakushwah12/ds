@@ -91,7 +91,6 @@ def multiplication(poly1,poly2):
     for i in range(len(temp)):
         if(temp[i]!=0):
             cnt+=1
-
     output(temp,cnt)
 
 v=int(input("Enter value:"))

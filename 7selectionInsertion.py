@@ -6,7 +6,7 @@ def selectionSort(arr,n):
 				pos=j
 				
 		(arr[i], arr[pos]) = (arr[pos], arr[i])
-  
+#   Time Complexity: O(n^2)
 def insertionSort(arr,n):
 	if n <= 1:
 		return 
@@ -18,7 +18,7 @@ def insertionSort(arr,n):
 			arr[j+1] = arr[j] 
 			j -= 1
 		arr[j+1] = temp 
-		
+	# Time Complexity: O(n^2)	
 def arrayInput(arr):
     n=int(input("Enter no. of elements: "))
     print("Enter the elements")

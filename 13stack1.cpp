@@ -26,6 +26,7 @@ bool wellParenthesized(string s){
     }
     return st.empty();
 }
+// TC: O(n)
 
 void infix_to_prefix(string s){
     reverse(s.begin(),s.end());
@@ -66,9 +67,9 @@ void infix_to_prefix(string s){
             st.pop();
         }
     reverse(res.begin(),res.end());
-    cout<<res;
-    
+    cout<<res; 
 }
+// TC: O(n)
 int main(){
     string stri;
 

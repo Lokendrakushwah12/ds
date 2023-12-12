@@ -72,31 +72,31 @@ def multiplication(m1,m2):
                 result[i][j]+= (m1[i][k]*m2[k][j])
     return result 
 
-def magic(matrix):
+def magicSquare(a,m,n):
     sumd1=0
     sumd2=0
-    p=len(matrix)
+    p=len(a)
     for i in range(p):
-        sumd1+= matrix[i][i]
-        sumd2+= matrix[p-i-1][i]
+        sumd1+=a[i][i]
+        sumd2+=a[p-i-1][i]
     f=0
     for i in range(p):
-        sum_r=0
-        sum_c=0
+        sumr=0
+        sumc=0
         for j in range(p):
-            sum_r+= matrix[i][j]
-            sum_c+= matrix[j][i]
-
-        if(sum_c!=sum_r and sum_r!=sumd1):
+            sumr+=a[i][j]
+            sumc+=a[j][i]
+        if sumr!=sumd1 or sumc!=sumd1:
             f=1
             break
-    if(f==0):
-        print("Given matrix is a Magic square matrix")
+    if sumd1!=sumd2 or f==1:
+        print("Not a magic square")
     else:
-        print("Given matrix is not a Magic square matrix")
+        print("Magic square")
+        print("Sum of rows and columns is:",sumd1)
 
 print("Addition of two given matrix is",addition(matrix1,matrix2))
 print("Substraction of two given matrix is:",substraction(matrix1,matrix2))
 print("Multiplication of two given matrix is:",multiplication(matrix1,matrix2))
 uppertriangular(matrix1)
-magic(matrix1)
+magicSquare(matrix1)

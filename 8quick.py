@@ -33,7 +33,8 @@ def quickSort(arr,low,high):
         quickSort(arr,low,p-1)
         quickSort(arr,p+1,high)
     return arr
-
+# Average Case: O(n log n)
+# Worst Case: O(n^2)
 sorted_arr = quickSort(arr,0,n-1)
 print("Sorted array using Quick Sort:", sorted_arr)
 print("Top Five Scores:", sorted_arr[n-5:n] )

@@ -31,6 +31,7 @@ class pinncal_club{
             sec=p;
         }
     }
+    // TC: O(1)
 
     void display(){
         node* temp=pre;
@@ -39,6 +40,7 @@ class pinncal_club{
             temp=temp->next;
         }
     }
+    // TC: O(n)
     void del(int PRN){
         node* curr=pre;
         node* prev=NULL;
@@ -56,6 +58,7 @@ class pinncal_club{
             delete curr;
         }
     }
+    // TC: O(n)
     int total(){
         int count=0;
         node* curr=pre;
@@ -67,6 +70,7 @@ class pinncal_club{
         }
         return count;
     }
+    // TC: O(n)
 
 };
 int main(){
