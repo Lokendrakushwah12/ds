@@ -1,4 +1,5 @@
 //Program for Hierarchical Inheritance with exception Handling.
+//hierarchical inheritance is when more than one derived classes are created from a single base class.
 #include <iostream>
 using namespace std;
 class Publication{

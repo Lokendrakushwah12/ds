@@ -2,21 +2,26 @@
 #include<string.h>
 using namespace std;
 
-class StudentData;
-class Student{
+class StudentData; //forward declaration
+class Student{ 
 
     string name;
-    int roll_no;
+    int rollNo;
     string clas;
     char* division;
     string DOB;
     char* bloodgroup;
     static int count;
+    //because we want to count the number of objects created
+    //and static variables are shared by all the objects of the class
+    //so we can increment the count variable in the constructor
+    //and decrement the count variable in the destructor
+
 
     public:
     Student(){
         name="";
-        roll_no=0;
+        rollNo=0;
         clas="";
         division=new char;
         DOB="dd/mm/yyyy";
@@ -64,11 +69,11 @@ class StudentData{
     }
 };
 
-inline void Student::getData(StudentData* st){
+inline void Student::getData(StudentData* st){ //inline function: function definition is given in the class itself
     cout<<"Enter Student Name : ";
     getline(cin,name);
     cout<<"Enter Roll Number : ";
-    cin>>roll_no;
+    cin>>rollNo;
     cout<<"Enter Class : ";
     cin.get();
     getline(cin,clas);
@@ -83,9 +88,9 @@ inline void Student::getData(StudentData* st){
     count++;
 }
 
-inline void Student::displayData(StudentData* st1){
+inline void Student::displayData(StudentData* st1){ 
     cout<<"Student Name : "<<name<<endl;
-    cout<<"Roll Number : "<<roll_no<<endl;
+    cout<<"Roll Number : "<<rollNo<<endl;
     cout<<"Class : "<<clas<<endl;
     cout<<"Division : "<<division<<endl;
     cout<<"Date of Birth : "<<DOB<<endl;
