@@ -1,6 +1,6 @@
-#include <GL/glut.h>
+#include <GL/glut.h> // GLUT, include glu.h and gl.h used for the GLU & GL libraries 
 #include <iostream>
-#include <math.h>
+#include <math.h> // Needed to use sin, cos, etc.
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class line {
 		void drawLine(int X1, int X2, int Y1, int Y2);
 		void drawLine(float X1, float X2, float Y1, float Y2);
 };
-void line :: getPointsBresenham(){
+void line :: getPointsBresenham(){  
 	cout << "Enter the Coordinates : \n";
 	cout << "x1, y1 : "; cin >>  this->XX1 >>  this->YY1;
 	cout << "x2, y2 : "; cin >>  this->XX2 >>  this->YY2;
@@ -39,7 +39,7 @@ void line :: getPointsDDA(){
 	glFlush();
 }
 
-void line :: drawLine(int X1, int X2, int Y1, int Y2){
+void line :: drawLine(int X1, int X2, int Y1, int Y2){ //DDA
 	
 	float dx, dy, step, xInc, yInc, x = X1, y = Y1;
 
@@ -60,7 +60,7 @@ void line :: drawLine(int X1, int X2, int Y1, int Y2){
 	}
 }
 
-void line :: drawLine(float X1, float X2, float Y1, float Y2){
+void line :: drawLine(float X1, float X2, float Y1, float Y2){ //Bresenham
 	
 	int dx, dy, xInc, yInc, d, i1, i2, x, y;
 		
@@ -80,7 +80,7 @@ void line :: drawLine(float X1, float X2, float Y1, float Y2){
 		for (int i = 0; i <= dx; i++){
 			glBegin(GL_POINTS);
 			glVertex2i(x,y);
-			glEnd();
+			glEnd(); 
 			glFlush();
 			x += xInc;
 			if (d < 0)
@@ -91,7 +91,7 @@ void line :: drawLine(float X1, float X2, float Y1, float Y2){
 			}
 		}
 	}
-	else {
+	else { 
 		i1 = 2 * dx;
 		i2 = 2 * (dx - dy);
 		d = i1 - dy;
@@ -113,11 +113,11 @@ void line :: drawLine(float X1, float X2, float Y1, float Y2){
 
 
 void myInit(){
-	glClearColor(0,0,0,0);
-	glColor3f(1,1,1);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluOrtho2D(-500,500,-500,500);
+	glClearColor(0,0,0,0); // Set background color to black and opaque
+	glColor3f(1,1,1); // Set drawing color to white
+	glMatrixMode(GL_PROJECTION); // To operate on the model-view matrix
+	glLoadIdentity(); // Reset the model-view matrix
+	gluOrtho2D(-500,500,-500,500); // Set the world coordinates.
 }
 
 void keyboard (unsigned char key, int x, int y) {
@@ -126,7 +126,7 @@ void keyboard (unsigned char key, int x, int y) {
 	if(key==27||key==32||key==13)  exit (0);
 }
 
-int main(int argc, char** argv){
+int main(int argc, char** argv){ //argc - argument count, argv - argument vector (array of character pointers) 
 
 	cout << "---MENU---\n";
 	cout << "1. D or d - DDA Algorithm \n";
@@ -134,16 +134,15 @@ int main(int argc, char** argv){
 	cout << "\n";
 	
 		
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE |GLUT_RGB);
-	glutInitWindowSize(400,400);
-	glutInitWindowPosition(50,50);
-	glutCreateWindow("Line Drawing Algorithm");
-	glutKeyboardFunc(keyboard);
-	myInit();
-	
-	
-	glutMainLoop();
+	glutInit(&argc, argv); // Initialize GLUT
+	glutInitDisplayMode(GLUT_SINGLE |GLUT_RGB); // Set the display mode
+	glutInitWindowSize(400,400); // Set the width and height of the window
+	glutInitWindowPosition(50,50); // Set the position of the window's initial top-left corner
+	glutCreateWindow("Line Drawing Algorithm"); // Create a window with the given title
+	glutKeyboardFunc(keyboard); // Register callback handler for special-key event
+	myInit(); // Call initialization routines
+
+	glutMainLoop(); // Enter the event-processing loop 
 
 	return 0;
 }
