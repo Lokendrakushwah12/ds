@@ -1,4 +1,4 @@
- Assignment 2: 
+Assignment 2: 
 
 create database Assignment2;
 use Assignment2;
